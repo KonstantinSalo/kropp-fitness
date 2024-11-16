@@ -1,0 +1,253 @@
+@font-face {
+  font-family: "Heebo";
+  src: url(../fonts/Heebo-Bold.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heebo";
+  src: url(../fonts/Heebo-Light.woff2) format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yantramanav";
+  src: url(../fonts/Yantramanav-Bold.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-dark-gray: #404040;
+  --color-light-gray: #c4c4c4;
+
+  --border-radius: 30px;
+  --border-light: 1px solid var(--color-light);
+  --border-dark-gray: 1px solid var(--color-dark-gray);
+
+  --font-family-base: "Heebo", sans-serif;
+  --font-family-accent: "Yantramanav", sans-serif;
+
+  --input-height: 54px;
+
+  --container-width: 1300px;
+  --container-padding-x: 15px;
+
+  --transition-duration: 0.2s;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+button,
+textarea,
+input,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: var(--color-light);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-light-gray);
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--color-light-gray);
+  background-color: var(--color-dark);
+}
+
+.container {
+  max-width: calc(var(--container-width) + (var(--container-padding-x) * 2));
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding-inline: 26px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+
+.button:hover {
+  background-color: var(--color-light-gray);
+}
+
+/* header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  padding-inline: 32px;
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 50px;
+}
+
+.header-menu-link {
+  display: inline-flex;
+  align-items: center;
+  height: 90px;
+  column-gap: 7px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 1.2px;
+}
+
+.header-menu-link.is-current::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  /* Наследует значение свойства color */
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.header-actions {
+  display: flex;
+  column-gap: 40px;
+}
+
+.header-burger-button {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  row-gap: 5px;
+  color: var(--color-light);
+  background-color: transparent;
+  border: var(--border-light);
+  border-radius: 50%;
+}
+
+.header-burger-button:hover {
+  color: var(--color-light-gray);
+  border-color: currentColor;
+}
+
+.header-burger-button-line {
+  width: 6px;
+  height: 1px;
+  background-color: currentColor;
+  box-shadow: 16px 0px 0px 0px currentColor;
+}
+
+
+@media (max-width: 1024px) {
+  .header {
+    flex-wrap: wrap;
+    padding-top: 20px;
+    row-gap: 10px;
+    padding-inline: 15px;
+  }
+  
+  .header-menu {
+    order: 1;
+    /* Свойство flex-basis указывает на размер элемента до того, как свободное место будет распределено */
+    flex-basis: 100%;
+  }
+
+  .header-menu-link {
+    height: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .button {
+    padding-inline: 18px;
+  }
+  
+  .header {
+    padding-top: 10px;
+  }
+  
+  .header-menu-list {
+    column-gap: 24px;
+  }
+
+  .header-menu-link {
+    height: 32px;
+  }
+
+  .header-actions {
+    column-gap: 15px;
+  }
+}
