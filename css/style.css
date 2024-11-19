@@ -85,6 +85,10 @@ p {
   margin: 0;
 }
 
+p:not([class]) :not(:last-child) {
+  margin-bottom: 24px;
+}
+
 ul,
 ol {
   margin: 0;
@@ -154,6 +158,38 @@ body {
 
 .button:hover {
   background-color: var(--color-light-gray);
+}
+
+.button.transparent {
+  position: relative;
+  height: var(--input-height);
+  padding-left: 31px;
+  padding-right: 80px;
+  background-color: transparent;
+  border: var(--border-light);
+}
+
+.button.transparent::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  height: 100%;
+  aspect-ratio: 1;
+  background: url(../icons/arrow-top-right.svg) center / 70% no-repeat;
+  border: var(--border-light);
+  border-radius: 50%;
+}
+
+.button.transparent:hover {
+  color: var(--color-dark);
+  background-color: var(--color-light-gray);
+}
+
+.title-medium {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+  color: var(--color-light);
 }
 
 /* header */
@@ -251,6 +287,7 @@ body {
   display: flex;
   align-items: end;
   font-weight: 700;
+  /* Вычисляем процент вьюпорта делением размера шрифта по макету на ширину всего макета и умножением на 100% (30 / 1920 * 100)*/
   font-size: clamp(16px, 1.56vw, 30px);
   line-height: 127%;
 }
@@ -270,7 +307,7 @@ body {
   font-weight: 700;
   font-size: min(18.75vw, 360px);
   /* коффициент ниже чем 1 - ошибка дизайна */
-  line-height: 1; 
+  line-height: 1;
 }
 
 .banner-pagination-list {
@@ -290,7 +327,7 @@ body {
 }
 
 .banner-pagination-button::after {
-  content: '';
+  content: "";
   width: 10px;
   aspect-ratio: 1;
   border: var(--border-light);
@@ -304,8 +341,77 @@ body {
 
 .banner-pagination-button:not(.is-current):hover::after {
   border-color: var(--color-light-gray);
+}
+
+/* motivation */
+
+.motivation-item:nth-child(even) {
+  background-color: var(--color-dark-alternate);
+}
+
+.motivation-item:nth-child(even) .motivation-card {
+  flex-direction: row-reverse;
+}
+
+.motivation-card {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* Вычисляем VW для гэпа делением отступа по макету на всю ширину макета и умножением на 100% (200 / 1920 * 100) */
+  column-gap: clamp(30px, 10.42vw, 200px);
+}
+
+.backdrop-title {
+  position: relative;
+  z-index: 2;
+}
+
+.backdrop-title::before {
+  content: '';
+  /* Display обязателен чтобы применять размеры и другие параметры */
+  display: block;
+  position: absolute;
+  right: calc(100% + 8px);
+  width: 26px;
+  aspect-ratio: 1;
+  background: url(../icons/plus.svg) center / contain no-repeat;
+}
+
+.backdrop-title::after {
+  content: attr(data-title);
+  position: absolute;
+  z-index: -1;
+  /* Позиционируем вручную через DevTools */
+  top: -0.05em;
+  left: -0.6em;
+  font-family: var(--font-family-accent);
+  /* Вычисляем коэффициент em делением размера шрифта по макету дочернего текста на размер шрифта родителя */
+  font-size: 2.8em;
+  color: transparent;
+  /* -webkit обязательно писать сверху */
+  -webkit-text-stroke: 1px var(--color-dark-gray);
+  /* text-stroke: 1px var(--color-dark-gray); */
+}
+
+.motivation-card-body {
+  padding-left: 35px;
+}
+
+.motivation-card-title:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.motivation-card-description {
+  max-width: 400px;
+}
+
+.motivation-card-description:not(:last-child) {
+  margin-bottom: 37px;
 } 
 
+.motivation-card-image {
+  margin-block: -60px;
+}
 
 @media (max-width: 1024px) {
   .header {
