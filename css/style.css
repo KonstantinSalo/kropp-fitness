@@ -170,7 +170,7 @@ body {
 }
 
 .button.transparent::after {
-  content: '';
+  content: "";
   position: absolute;
   right: -1px;
   height: 100%;
@@ -367,7 +367,7 @@ body {
 }
 
 .backdrop-title::before {
-  content: '';
+  content: "";
   /* Display обязателен чтобы применять размеры и другие параметры */
   display: block;
   position: absolute;
@@ -407,7 +407,7 @@ body {
 
 .motivation-card-description:not(:last-child) {
   margin-bottom: 37px;
-} 
+}
 
 .motivation-card-image {
   margin-block: -60px;
@@ -424,6 +424,10 @@ body {
     order: 1;
     /* Свойство flex-basis указывает на размер элемента до того, как свободное место будет распределено */
     flex-basis: 100%;
+  }
+
+  .header-menu-list {
+    justify-content: center;
   }
 
   .header-menu-link {
